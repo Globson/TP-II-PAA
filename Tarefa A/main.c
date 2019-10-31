@@ -17,11 +17,11 @@ int main(int argc, char const *argv[]) {
     printf("\n\tErro!Nao foi possivel abrir arquivo!\n");}  //Caso erro de abertura, programa solicita novamente entrada//
   else{
     printf("\n\tArquivo aberto com sucesso!\n");
-    for(int k=0;k<100;k++){
-      for(int l=0;l<100;l++){
+    /*for(int k=0;k<100;k++){  //Refleti muito e acredito q se o algoritmo estiver 100% dentro dos limites não ha necessidade de inicilizar toda matriz com 0;
+      for(int l=0;l<100;l++){  //Porem durante a manipulacao e visualizacao da matriz,o tamanho QuantLinhas DEVE SER RESPEITADO!
         Matriz[k][l]=0;
       }
-    }
+    }*/
     while(!feof(f)){
       fscanf(f,"%d",&Valores[Contador]);
       Contador++;
