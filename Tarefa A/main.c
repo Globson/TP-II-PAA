@@ -5,12 +5,13 @@
 int main(int argc, char const *argv[]) {
   int Matriz[100][100];//Utilizaremos apenas as dimensoes que precisarmos, o maximo é 100;
   FILE *f;
-  char NomeArquivo[20]="Arquivo.txt"; //retirar dps
+  char NomeArquivo[20];
+  // char NomeArquivo[20]="Arquivo.txt"; //retirar dps
   int Contador=0,QuantLinhas;
   //int Valores[5050]; //5050 é o valor da soma dos 100 primeiros numeros de 1 a 100;
   int *Valores = (int*)malloc(sizeof(int)); //utilizei um vetor dinamico para diminuir gasto exagerado de memoria em vetor de 5050 posicoes.
   printf("\nDigite o nome do arquivo que deseja abrir:");    //Abrindo arquivo//
-  //scanf("%s",NomeArquivo);
+  scanf("%s",NomeArquivo);
   f = fopen(NomeArquivo,"r");
   if(f == NULL){
     printf("\n\tErro!Nao foi possivel abrir arquivo!\n");}  //Caso erro de abertura, programa solicita novamente entrada//
