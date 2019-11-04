@@ -28,7 +28,7 @@ int LeituraArquivo(int Matriz[][100]){
         break;
       }
     }
+    fclose(f);
   }
-  fclose(f);
   return QuantLinhas;
 }
