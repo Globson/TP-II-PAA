@@ -45,7 +45,7 @@ int Menu(){
   printf("\n----------Menu----------\n");
   printf("\n1 -> Metodo Recursivo:");
   printf("\n2 -> Metodo Programacao Dinamica:");
-  printf("\n3 -> #FerrerinhaCabaco:");
+  printf("\n3 -> De Tras para Frente:");
   printf("\n4 -> Finalizar:");
   do{
   printf("\nEntre com a opcao: ");
@@ -55,6 +55,13 @@ int Menu(){
   }
 }while(a!=1 && a!=2 && a!=3 && a!=4);
   return a;
+}
+
+void CopiaMatriz(int MatrizOrigem[][100],int MatrizDestino[][100],int QuantLinhas){
+  for(int i=0;i<QuantLinhas;i++)
+    for(int j=0;j<i+1;j++){
+      MatrizDestino[i][j]=MatrizOrigem[i][j];
+    }
 }
 
 //Funcoes para contagem de tempo de execucao//

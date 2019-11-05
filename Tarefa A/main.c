@@ -1,6 +1,7 @@
 #include "Headers/Funcoes.h"
 #include "Headers/Recursiva.h"
 #include "Headers/Memorization.h"
+#include "Headers/DeTrasPraFrente.h"
 //#include <math.h>  //adicionar -lm no fim do comando do gcc
 
 int main(int argc, char const *argv[]) {
@@ -34,8 +35,14 @@ int main(int argc, char const *argv[]) {
         PararTimer(&timer);
         printf("\n-> O caminho de maior custo na piramide utilizando programacao dinamica tem valor total de: %d",MaiorCaminho);
         printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        //ImprimeMelhorCaminho(Matriz,QuantLinhas);
       }
       if(a==3){
+        IniciarTimer(&timer);
+        int MaiorCaminho = TopDeTrasPraFrente(Matriz,QuantLinhas);
+        PararTimer(&timer);
+        printf("\n-> O caminho de maior custo na piramide utilizando de tras pra frente tem valor total de: %d",MaiorCaminho);
+        printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
       }
       if(a==4){
         int b;

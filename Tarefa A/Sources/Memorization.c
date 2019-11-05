@@ -19,3 +19,35 @@ int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][1
     return MatrizAux[x][y];
   }
 }
+
+void ImprimeMelhorCaminho(int Matriz[][100],int QuantLinhas){
+  int MatrizAux[100][100];
+  CopiaMatriz(Matriz,MatrizAux,QuantLinhas);
+  MaiorCaminho(MatrizAux,QuantLinhas,0,0);
+  for(int i=0;i<QuantLinhas;i++){
+    for(int j=0;j<i+1;j++){
+      if(MatrizAux[i][j]==-1){
+        printf("(%d) ",Matriz[i][j]);
+      }
+      else{
+        printf("%d ",Matriz[i][j]);
+      }
+    }
+    printf("\n");
+  }
+}
+void MaiorCaminho(int Matriz[][100],int QuantLinhas,int x,int y){
+  if(QuantLinhas <= x){
+    return;
+  }
+  Matriz[x][y] = -1;
+  if(QuantLinhas-1 == x){
+    return;
+  }
+  if(Matriz[x+1][y] > Matriz[x+1][y+1]){
+    MaiorCaminho(Matriz,QuantLinhas,x+1,y);
+  }
+  else{
+    MaiorCaminho(Matriz,QuantLinhas,x+1,y+1);
+  }
+}
