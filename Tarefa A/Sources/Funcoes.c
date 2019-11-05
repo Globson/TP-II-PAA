@@ -32,3 +32,41 @@ int LeituraArquivo(int Matriz[][100]){
   }
   return QuantLinhas;
 }
+
+int Maior(int a,int b){
+  if(a>=b){
+    return a;
+  }
+  return b;
+}
+
+int Menu(){
+  int a;
+  printf("\n----------Menu----------\n");
+  printf("\n1 -> Metodo Recursivo:");
+  printf("\n2 -> Metodo Programacao Dinamica:");
+  printf("\n3 -> #FerrerinhaCabaco:");
+  printf("\n4 -> Finalizar:");
+  do{
+  printf("\nEntre com a opcao: ");
+  scanf("%d",&a);
+  if(a!=1 && a!=2 && a!=3 && a!=4){
+    printf("\nOpcao invalida!\n");
+  }
+}while(a!=1 && a!=2 && a!=3 && a!=4);
+  return a;
+}
+
+//Funcoes para contagem de tempo de execucao//
+void IniciarTimer(Timer *timer){
+timer->TempoInicial = clock();
+}
+
+void PararTimer(Timer *timer){
+timer->TempoFinal = clock();
+timer->TempoTotal = (double)(timer->TempoFinal - timer->TempoInicial)/CLOCKS_PER_SEC;
+}
+
+double TempoTotal(Timer timer){
+    return timer.TempoTotal;
+}
