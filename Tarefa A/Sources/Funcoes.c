@@ -46,15 +46,16 @@ int Menu(){
   printf("\n1 -> Metodo Recursivo:");
   printf("\n2 -> Metodo Programacao Dinamica:");
   printf("\n3 -> De Tras para Frente:");
-  printf("\n4 -> Imprimir Caminho:");
-  printf("\n5 -> Finalizar:");
+  printf("\n4 -> Imprimir Caminho utilizando Programacao Dinamica:");
+  printf("\n5 -> Imprimir Caminho utilizando De Tras para Frente:");
+  printf("\n6 -> Finalizar:");
   do{
   printf("\nEntre com a opcao: ");
   scanf("%d",&a);
-  if(a!=1 && a!=2 && a!=3 && a!=4 && a!=5){
+  if(a!=1 && a!=2 && a!=3 && a!=4 && a!=5 && a!=6){
     printf("\nOpcao invalida!\n");
   }
-}while(a!=1 && a!=2 && a!=3 && a!=4 && a!=5);
+}while(a!=1 && a!=2 && a!=3 && a!=4 && a!=5 && a!=6);
   return a;
 }
 
@@ -63,6 +64,19 @@ void CopiaMatriz(int MatrizOrigem[][100],int MatrizDestino[][100],int QuantLinha
     for(int j=0;j<i+1;j++){
       MatrizDestino[i][j]=MatrizOrigem[i][j];
     }
+}
+
+void MelhorCaminho(int QuantLinhas,int x,int y,int MatrizAux[][100]){
+  MatrizAux[x][y]=-2; //Valor de referencia.
+  if(x<QuantLinhas-1){
+    if(MatrizAux[x+1][y]>MatrizAux[x+1][y+1]){
+      MelhorCaminho(QuantLinhas,x+1,y,MatrizAux);
+    }
+    else{
+      MelhorCaminho(QuantLinhas,x+1,y+1,MatrizAux);
+    }
+  }
+  return;
 }
 
 //Funcoes para contagem de tempo de execucao//

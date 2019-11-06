@@ -22,7 +22,7 @@ int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][1
 }
 
 
-void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas){
+void CaminhoMemorization(int Matriz[][100],int QuantLinhas){
   int MatrizAux[QuantLinhas][100];
   for(int i=0;i<QuantLinhas;i++)
     for(int j=0;j<i+1;j++){
@@ -48,18 +48,4 @@ void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas){
       }
     }
   }
-}
-
-
-void MelhorCaminho(int QuantLinhas,int x,int y,int MatrizAux[][100]){
-  MatrizAux[x][y]=-2; //Valor de referencia.
-  if(x<QuantLinhas-1){
-    if(MatrizAux[x+1][y]>MatrizAux[x+1][y+1]){
-      MelhorCaminho(QuantLinhas,x+1,y,MatrizAux);
-    }
-    else{
-      MelhorCaminho(QuantLinhas,x+1,y+1,MatrizAux);
-    }
-  }
-  return;
 }

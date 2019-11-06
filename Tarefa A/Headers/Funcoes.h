@@ -19,7 +19,7 @@ int LeituraArquivo(int Matriz[][100]);
 int Maior(int a,int b);
 int Menu();
 void CopiaMatriz(int MatrizOrigem[][100],int MatrizDestino[][100],int QuantLinhas);
-
+void MelhorCaminho(int QuantLinhas,int x,int y,int MatrizAux[][100]);
 //Estrutura de dados para contabilizar caminho.
 
 #endif

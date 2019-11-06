@@ -44,10 +44,14 @@ int main(int argc, char const *argv[]) {
         printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
       }
       if(a==4){
-        ExibeMelhorCaminho(Matriz,QuantLinhas);
+        CaminhoMemorization(Matriz,QuantLinhas);
         printf("\n");
       }
       if(a==5){
+        CaminhoDeTrasPraFrente(Matriz,QuantLinhas);
+        printf("\n");
+      }
+      if(a==6){
         int b;
         printf("\nDeseja mesmo finalizar?");
         printf("\n\t1 -> Sim");
