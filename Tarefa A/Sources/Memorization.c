@@ -10,6 +10,7 @@ int TopMemorization(int Matriz[][100],int QuantLinhas,int x,int y){
 
 int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][100]){
   if(QuantLinhas-1 == x){
+    MatrizAux[x][y] = Matriz[x][y]; //So preencho para poder usar matriz de pesos posteriormente
     return Matriz[x][y];
   }
   else{
@@ -20,34 +21,37 @@ int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][1
   }
 }
 
-void ImprimeMelhorCaminho(int Matriz[][100],int QuantLinhas){
-  int MatrizAux[100][100];
-  CopiaMatriz(Matriz,MatrizAux,QuantLinhas);
-  MaiorCaminho(MatrizAux,QuantLinhas,0,0);
-  for(int i=0;i<QuantLinhas;i++){
+
+void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas,int x,int y){
+  int MatrizAux[QuantLinhas][100];
+  int VetorPosicoes[QuantLinhas];
+  for(int i=0;i<QuantLinhas;i++)
     for(int j=0;j<i+1;j++){
-      if(MatrizAux[i][j]==-1){
-        printf("(%d) ",Matriz[i][j]);
-      }
-      else{
-        printf("%d ",Matriz[i][j]);
+      MatrizAux[i][j] = -1;
+    }
+  Memorization(Matriz,QuantLinhas,x,y,MatrizAux); //MatrizAux é modificada atraves dessa chamada, ela recebe os pesos.
+  /*for(int i=0;i<QuantLinhas;i++){
+    printf("\n");
+    for(int j=0;j<i+1;j++){
+      printf("%d ",MatrizAux[i][j]);
+    }
+  }*/
+
+  int MaiorLinha;
+
+  for(int x=0;x<QuantLinhas;x++){
+    MaiorLinha = MatrizAux[x][0]; //Valor inicial da variavel
+    VetorPosicoes[x] = 0;
+    for(int y=1;y<x+1;y++){
+      if(MatrizAux[x][y]>MaiorLinha){
+        MaiorLinha = MatrizAux[x][y];
+        VetorPosicoes[x] = y;
       }
     }
-    printf("\n");
   }
-}
-void MaiorCaminho(int Matriz[][100],int QuantLinhas,int x,int y){
-  if(QuantLinhas <= x){
-    return;
+  printf("\n->Caminho : ");
+  for(int k=0;k<QuantLinhas;k++){
+    printf("%d ",Matriz[k][VetorPosicoes[k]]);
   }
-  Matriz[x][y] = -1;
-  if(QuantLinhas-1 == x){
-    return;
-  }
-  if(Matriz[x+1][y] > Matriz[x+1][y+1]){
-    MaiorCaminho(Matriz,QuantLinhas,x+1,y);
-  }
-  else{
-    MaiorCaminho(Matriz,QuantLinhas,x+1,y+1);
-  }
+  printf("\n");
 }
