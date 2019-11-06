@@ -2,13 +2,12 @@
 int LeituraArquivo(int Matriz[][100]){
   FILE *f;
   char NomeArquivo[20];
-  // char NomeArquivo[20]="Arquivo.txt"; //retirar dps
   int QuantLinhas=-1;
-  printf("\nDigite o nome do arquivo que deseja abrir:");    //Abrindo arquivo//
+  printf("\nDigite o nome do arquivo que deseja abrir:"); 
   scanf("%s",NomeArquivo);
   f = fopen(NomeArquivo,"r");
   if(f == NULL){
-    printf("\n\tErro!Nao foi possivel abrir arquivo!\n");}  //Caso erro de abertura, programa solicita novamente entrada//
+    printf("\n\tErro!Nao foi possivel abrir arquivo!\n");}
   else{
     printf("\n\tArquivo aberto com sucesso!\n");
     /*for(int k=0;k<100;k++){  //Refleti muito e acredito q se o algoritmo estiver 100% dentro dos limites não ha necessidade de inicilizar toda matriz com 0;
