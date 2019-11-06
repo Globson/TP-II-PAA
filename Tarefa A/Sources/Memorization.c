@@ -3,7 +3,7 @@ int TopMemorization(int Matriz[][100],int QuantLinhas,int x,int y){
   int MatrizAux[QuantLinhas][100];
   for(int i=0;i<QuantLinhas;i++)
     for(int j=0;j<i+1;j++){
-      MatrizAux[i][j] = -1;
+      MatrizAux[i][j] = -1; //Inicializando matriz para chamada de memorization.
     }
   return Memorization(Matriz,QuantLinhas,x,y,MatrizAux);
 }
@@ -22,36 +22,35 @@ int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][1
 }
 
 
-void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas,int x,int y){
+void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas){
   int MatrizAux[QuantLinhas][100];
-  int VetorPosicoes[QuantLinhas];
   for(int i=0;i<QuantLinhas;i++)
     for(int j=0;j<i+1;j++){
-      MatrizAux[i][j] = -1;
+      MatrizAux[i][j] = -1; //Inicializando matriz para chamada de memorization.
     }
-  Memorization(Matriz,QuantLinhas,x,y,MatrizAux); //MatrizAux é modificada atraves dessa chamada, ela recebe os pesos.
-  /*for(int i=0;i<QuantLinhas;i++){
+  Memorization(Matriz,QuantLinhas,0,0,MatrizAux); //Inicializando matriz de custos.
+  /*for(int x=0;x<QuantLinhas;x++){
     printf("\n");
-    for(int j=0;j<i+1;j++){
-      printf("%d ",MatrizAux[i][j]);
+    for(int y=0;y<x+1;y++){
+      printf("%d ",MatrizAux[x][y]);
     }
   }*/
+  printf("\n\tCaminho partindo do topo: \n");
+  MelhorCaminho(Matriz,QuantLinhas,0,0,MatrizAux);
 
-  int MaiorLinha;
+}
 
-  for(int x=0;x<QuantLinhas;x++){
-    MaiorLinha = MatrizAux[x][0]; //Valor inicial da variavel
-    VetorPosicoes[x] = 0;
-    for(int y=1;y<x+1;y++){
-      if(MatrizAux[x][y]>MaiorLinha){
-        MaiorLinha = MatrizAux[x][y];
-        VetorPosicoes[x] = y;
-      }
+
+void MelhorCaminho(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][100]){
+  printf("(%d)",Matriz[x][y]);
+  if(x<QuantLinhas-1){
+    printf(" -> ");
+    if(MatrizAux[x+1][y]>MatrizAux[x+1][y+1]){
+      MelhorCaminho(Matriz,QuantLinhas,x+1,y,MatrizAux);
+    }
+    else{
+      MelhorCaminho(Matriz,QuantLinhas,x+1,y+1,MatrizAux);
     }
   }
-  printf("\n->Caminho : ");
-  for(int k=0;k<QuantLinhas;k++){
-    printf("%d ",Matriz[k][VetorPosicoes[k]]);
-  }
-  printf("\n");
+  return;
 }

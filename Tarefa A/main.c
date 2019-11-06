@@ -35,7 +35,6 @@ int main(int argc, char const *argv[]) {
         PararTimer(&timer);
         printf("\n-> O caminho de maior custo na piramide utilizando programacao dinamica tem valor total de: %d",MaiorCaminho);
         printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
-        ExibeMelhorCaminho(Matriz,QuantLinhas,0,0);
       }
       if(a==3){
         IniciarTimer(&timer);
@@ -45,6 +44,10 @@ int main(int argc, char const *argv[]) {
         printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
       }
       if(a==4){
+        ExibeMelhorCaminho(Matriz,QuantLinhas);
+        printf("\n");
+      }
+      if(a==5){
         int b;
         printf("\nDeseja mesmo finalizar?");
         printf("\n\t1 -> Sim");
@@ -57,6 +60,7 @@ int main(int argc, char const *argv[]) {
           }
         } while(b!=1 && b!=2);
         if(b==1){
+          printf("\n\tOBRIGADO POR UTILIZAR O PROGRAMA!\n");
           break;
         }
         continue;

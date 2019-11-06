@@ -46,14 +46,15 @@ int Menu(){
   printf("\n1 -> Metodo Recursivo:");
   printf("\n2 -> Metodo Programacao Dinamica:");
   printf("\n3 -> De Tras para Frente:");
-  printf("\n4 -> Finalizar:");
+  printf("\n4 -> Imprimir Caminho:");
+  printf("\n5 -> Finalizar:");
   do{
   printf("\nEntre com a opcao: ");
   scanf("%d",&a);
-  if(a!=1 && a!=2 && a!=3 && a!=4){
+  if(a!=1 && a!=2 && a!=3 && a!=4 && a!=5){
     printf("\nOpcao invalida!\n");
   }
-}while(a!=1 && a!=2 && a!=3 && a!=4);
+}while(a!=1 && a!=2 && a!=3 && a!=4 && a!=5);
   return a;
 }
 
