@@ -35,21 +35,30 @@ void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas){
       printf("%d ",MatrizAux[x][y]);
     }
   }*/
-  printf("\n\tCaminho partindo do topo: \n");
-  MelhorCaminho(Matriz,QuantLinhas,0,0,MatrizAux);
-
+  printf("\n\tRota partindo do topo: \n");
+  MelhorCaminho(QuantLinhas,0,0,MatrizAux);
+  for(int x=0;x<QuantLinhas;x++){
+    printf("\n");
+    for(int y=0;y<x+1;y++){
+      if(MatrizAux[x][y]==-2){
+        printf("(%d) ",Matriz[x][y]);
+      }
+      else{
+        printf("%d ",Matriz[x][y]);
+      }
+    }
+  }
 }
 
 
-void MelhorCaminho(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][100]){
-  printf("(%d)",Matriz[x][y]);
+void MelhorCaminho(int QuantLinhas,int x,int y,int MatrizAux[][100]){
+  MatrizAux[x][y]=-2; //Valor de referencia.
   if(x<QuantLinhas-1){
-    printf(" -> ");
     if(MatrizAux[x+1][y]>MatrizAux[x+1][y+1]){
-      MelhorCaminho(Matriz,QuantLinhas,x+1,y,MatrizAux);
+      MelhorCaminho(QuantLinhas,x+1,y,MatrizAux);
     }
     else{
-      MelhorCaminho(Matriz,QuantLinhas,x+1,y+1,MatrizAux);
+      MelhorCaminho(QuantLinhas,x+1,y+1,MatrizAux);
     }
   }
   return;

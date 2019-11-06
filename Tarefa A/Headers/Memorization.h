@@ -4,5 +4,5 @@
 int TopMemorization(int Matriz[][100],int QuantLinhas,int x,int y);
 int Memorization(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][100]);
 void ExibeMelhorCaminho(int Matriz[][100],int QuantLinhas);
-void MelhorCaminho(int Matriz[][100],int QuantLinhas,int x,int y,int MatrizAux[][100]);
+void MelhorCaminho(int QuantLinhas,int x,int y,int MatrizAux[][100]);
 #endif
