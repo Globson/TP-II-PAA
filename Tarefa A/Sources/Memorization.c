@@ -35,7 +35,7 @@ void CaminhoMemorization(int Matriz[][100],int QuantLinhas){
       printf("%d ",MatrizAux[x][y]);
     }
   }*/
-  printf("\n\tRota partindo do topo: \n");
+  printf("\n\tRota Programacao Dinamica: \n");
   MelhorCaminho(QuantLinhas,0,0,MatrizAux);
   for(int x=0;x<QuantLinhas;x++){
     printf("\n");

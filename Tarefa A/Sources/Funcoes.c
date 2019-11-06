@@ -42,12 +42,12 @@ int Maior(int a,int b){
 
 int Menu(){
   int a;
-  printf("\n----------Menu----------\n");
+  printf("\n-----------------------Menu-----------------------\n");
   printf("\n1 -> Metodo Recursivo:");
   printf("\n2 -> Metodo Programacao Dinamica:");
   printf("\n3 -> De Tras para Frente:");
-  printf("\n4 -> Imprimir Caminho utilizando Programacao Dinamica:");
-  printf("\n5 -> Imprimir Caminho utilizando De Tras para Frente:");
+  printf("\n4 -> Imprimir Rota utilizando Programacao Dinamica:");
+  printf("\n5 -> Imprimir Rota utilizando De Tras para Frente:");
   printf("\n6 -> Finalizar:");
   do{
   printf("\nEntre com a opcao: ");

@@ -19,7 +19,7 @@ void CaminhoDeTrasPraFrente(int Matriz[][100],int QuantLinhas){
   int MatrizAux[QuantLinhas][100];
   CopiaMatriz(Matriz,MatrizAux,QuantLinhas);
   DeTrasPraFrente(MatrizAux,QuantLinhas);
-  printf("\n\tCaminho partindo do topo: \n");
+  printf("\n\tRota De Tras pra Frente: \n");
   MelhorCaminho(QuantLinhas,0,0,MatrizAux);
   for(int x=0;x<QuantLinhas;x++){
     printf("\n");
