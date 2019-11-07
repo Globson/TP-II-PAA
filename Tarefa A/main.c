@@ -2,10 +2,10 @@
 #include "Headers/Recursiva.h"
 #include "Headers/Memorization.h"
 #include "Headers/DeTrasPraFrente.h"
+#define DEBUG 1
 //#include <math.h>  //adicionar -lm no fim do comando do gcc
 
 int main(int argc, char const *argv[]) {
-  system("clear");
   Timer timer;
   int Matriz[100][100];//Utilizaremos apenas as dimensoes que precisarmos, o maximo é 100;
   int QuantLinhas = LeituraArquivo(Matriz);
@@ -19,29 +19,47 @@ int main(int argc, char const *argv[]) {
       }
     }
     printf("\n\n\tPiramide Carregada!\n\n");
-    //system("read -p 'Pressione Enter para continuar...' var");
-    while(1){
       int a = Menu();
       if(a==1){
-        IniciarTimer(&timer);
-        int MaiorCaminho = Recursiva(Matriz,QuantLinhas,0,0);
-        PararTimer(&timer);
-        printf("\n-> O caminho de maior custo na piramide utilizando recursividade tem valor total de: %d",MaiorCaminho);
-        printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        if(DEBUG){
+          IniciarTimer(&timer);
+          int MaiorCaminho = Recursiva(Matriz,QuantLinhas,0,0);
+          PararTimer(&timer);
+          printf("\n-> O caminho de maior custo na piramide utilizando recursividade tem valor total de: %d",MaiorCaminho);
+          printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        }
+        else{
+          int MaiorCaminho = Recursiva(Matriz,QuantLinhas,0,0);
+          printf("\n-> O caminho de maior custo na piramide utilizando recursividade tem valor total de: %d\n",MaiorCaminho);
+        }
       }
       if(a==2){
-        IniciarTimer(&timer);
-        int MaiorCaminho = TopMemorization(Matriz,QuantLinhas,0,0);
-        PararTimer(&timer);
-        printf("\n-> O caminho de maior custo na piramide utilizando programacao dinamica tem valor total de: %d",MaiorCaminho);
-        printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        if(DEBUG){
+          IniciarTimer(&timer);
+          int MaiorCaminho = TopMemorization(Matriz,QuantLinhas,0,0);
+          PararTimer(&timer);
+          printf("\n-> O caminho de maior custo na piramide utilizando programacao dinamica tem valor total de: %d",MaiorCaminho);
+          printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        }
+        else{
+          int MaiorCaminho = TopMemorization(Matriz,QuantLinhas,0,0);
+          printf("\n-> O caminho de maior custo na piramide utilizando programacao dinamica tem valor total de: %d\n",MaiorCaminho);
+        }
+
       }
       if(a==3){
-        IniciarTimer(&timer);
-        int MaiorCaminho = TopDeTrasPraFrente(Matriz,QuantLinhas);
-        PararTimer(&timer);
-        printf("\n-> O caminho de maior custo na piramide utilizando de tras pra frente tem valor total de: %d",MaiorCaminho);
-        printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        if(DEBUG){
+          IniciarTimer(&timer);
+          int MaiorCaminho = TopDeTrasPraFrente(Matriz,QuantLinhas);
+          PararTimer(&timer);
+          printf("\n-> O caminho de maior custo na piramide utilizando de tras pra frente tem valor total de: %d",MaiorCaminho);
+          printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        }
+        else{
+          int MaiorCaminho = TopDeTrasPraFrente(Matriz,QuantLinhas);
+          printf("\n-> O caminho de maior custo na piramide utilizando de tras pra frente tem valor total de: %d\n",MaiorCaminho);
+        }
+
       }
       if(a==4){
         CaminhoMemorization(Matriz,QuantLinhas);
@@ -51,25 +69,7 @@ int main(int argc, char const *argv[]) {
         CaminhoDeTrasPraFrente(Matriz,QuantLinhas);
         printf("\n");
       }
-      if(a==6){
-        int b;
-        printf("\nDeseja mesmo finalizar?");
-        printf("\n\t1 -> Sim");
-        printf("\n\t2 -> Nao");
-        do {
-          printf("\nEntre: ");
-          scanf("%d",&b);
-          if(b!=1 && b!=2){
-            printf("\nOpcao Invalida!\n");
-          }
-        } while(b!=1 && b!=2);
-        if(b==1){
-          printf("\n\tOBRIGADO POR UTILIZAR O PROGRAMA!\n");
-          break;
-        }
-        continue;
-      }
-    }
+      printf("\n\tOBRIGADO POR UTILIZAR O PROGRAMA!\n");
   }
   return 0;
 }

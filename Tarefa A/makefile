@@ -4,5 +4,11 @@ all: main.c Sources/Funcoes.c Sources/Recursiva.c Sources/Memorization.c Sources
 run: EXEC
 	./EXEC
 
+Mem: EXEC
+	valgrind --tool=memcheck ./EXEC
+
+CPU: EXEC
+	command time -v ./EXEC
+
 rm: EXEC
 	rm EXEC

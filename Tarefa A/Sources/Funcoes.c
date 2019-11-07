@@ -3,7 +3,7 @@ int LeituraArquivo(int Matriz[][100]){
   FILE *f;
   char NomeArquivo[20];
   int QuantLinhas=-1;
-  printf("\nDigite o nome do arquivo que deseja abrir:"); 
+  printf("\nDigite o nome do arquivo que deseja abrir:");
   scanf("%s",NomeArquivo);
   f = fopen(NomeArquivo,"r");
   if(f == NULL){
@@ -47,14 +47,13 @@ int Menu(){
   printf("\n3 -> De Tras para Frente:");
   printf("\n4 -> Imprimir Rota utilizando Programacao Dinamica:");
   printf("\n5 -> Imprimir Rota utilizando De Tras para Frente:");
-  printf("\n6 -> Finalizar:");
   do{
   printf("\nEntre com a opcao: ");
   scanf("%d",&a);
-  if(a!=1 && a!=2 && a!=3 && a!=4 && a!=5 && a!=6){
+  if(a!=1 && a!=2 && a!=3 && a!=4 && a!=5){
     printf("\nOpcao invalida!\n");
   }
-}while(a!=1 && a!=2 && a!=3 && a!=4 && a!=5 && a!=6);
+}while(a!=1 && a!=2 && a!=3 && a!=4 && a!=5);
   return a;
 }
 
