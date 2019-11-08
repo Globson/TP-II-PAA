@@ -20,6 +20,7 @@ int main(int argc, char const *argv[]) {
     system("clear");
     MenuPrincipal();
     scanf("%d", &opcao);
+    getchar();
     system("clear");
     //printf("%d", opcao);
     switch (opcao) {
@@ -48,9 +49,6 @@ int main(int argc, char const *argv[]) {
         free(palavra02);
         confere = 0;
         system("read -p 'Pressione Enter para continuar...' var");
-        break;
-      case 3:
-
         break;
       default:
         MenuSaida();
