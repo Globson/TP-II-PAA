@@ -6,6 +6,19 @@
 #include <malloc.h>
 
 #include "../Headers/Funcoes.h"
+//Funcoes para contagem de tempo de execucao//
+void IniciarTimer(Timer *timer){
+timer->TempoInicial = clock();
+}
+
+void PararTimer(Timer *timer){
+timer->TempoFinal = clock();
+timer->TempoTotal = (double)(timer->TempoFinal - timer->TempoInicial)/CLOCKS_PER_SEC;
+}
+
+double TempoTotal(Timer timer){
+    return timer.TempoTotal;
+}
 
 int ** DistanciaEdicao(char *palavra01, char *palavra02){
   int tamanhoPalavra01 = 0, tamanhoPalavra02 = 0;
