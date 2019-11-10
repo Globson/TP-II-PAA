@@ -7,22 +7,9 @@
 
 #include "Headers/Funcoes.h"
 #include "Headers/Menu.h"
-#define DEBUG 1  //1 para ativado, 0 para desativado
+#define DEBUG 0  //1 para ativado, 0 para desativado
 int main(int argc, char const *argv[]) {
   Timer timer;
-  /*
-  if(DEBUG){
-    IniciarTimer(&timer);
-    int MaiorCaminho = Recursiva(Matriz,QuantLinhas,0,0);  //chama funcao que quer calcular.
-    PararTimer(&timer);
-    printf("\n-> O caminho de maior custo na piramide utilizando recursividade tem valor total de: %d",MaiorCaminho);
-    printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
-  }
-  else{
-    int MaiorCaminho = Recursiva(Matriz,QuantLinhas,0,0);
-    printf("\n-> O caminho de maior custo na piramide utilizando recursividade tem valor total de: %d\n",MaiorCaminho);
-  }
-  */
   int opcao = 0, confere = 0;
   int contAux = 0;
   int ** matrizDistancia;
@@ -54,11 +41,27 @@ int main(int argc, char const *argv[]) {
           system("read -p 'Pressione Enter para continuar...' var");
           break;
         }
-        printf("Palavra 01: %s\n", palavra01);
-        printf("Palavra 02: %s\n", palavra02);
-        matrizDistancia = DistanciaEdicao(palavra01, palavra02);
-        ExibirMatriz(matrizDistancia, strlen(palavra01), strlen(palavra02));
-        ReconstruirSolucao(matrizDistancia, strlen(palavra01), strlen(palavra02), palavra01, palavra02, contAux);
+        if(DEBUG){
+          IniciarTimer(&timer);
+          printf("Palavra 01: %s\n", palavra01);
+          printf("Palavra 02: %s\n\n", palavra02);
+          matrizDistancia = DistanciaEdicao(palavra01, palavra02);
+          printf("Matriz de Distancia\n\n");
+          ExibirMatriz(matrizDistancia, strlen(palavra01), strlen(palavra02));
+          printf("\n");
+          ReconstruirSolucao(matrizDistancia, strlen(palavra01), strlen(palavra02), palavra01, palavra02, contAux);
+          PararTimer(&timer);
+          printf("\n-> O tempo de execucao foi de %lf segundos\n\n", TempoTotal(timer));
+        }
+        else{
+          printf("Palavra 01: %s\n", palavra01);
+          printf("Palavra 02: %s\n\n", palavra02);
+          matrizDistancia = DistanciaEdicao(palavra01, palavra02);
+          printf("Matriz de Distancia\n\n");
+          ExibirMatriz(matrizDistancia, strlen(palavra01), strlen(palavra02));
+          printf("\n");
+          ReconstruirSolucao(matrizDistancia, strlen(palavra01), strlen(palavra02), palavra01, palavra02, contAux);
+        }
         free(palavra01);
         free(palavra02);
         confere = 0;

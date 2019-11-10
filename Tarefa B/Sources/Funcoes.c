@@ -56,25 +56,26 @@ int Minimo(int num1, int num2){
     return num2;
   }
 }
-void ReconstruirSolucao(int ** matrizDistancia, int linha, int coluna, char* palavra01, char* palavra02, int contAux){
+int ReconstruirSolucao(int ** matrizDistancia, int linha, int coluna, char* palavra01, char* palavra02, int contAux){
   int i, j;
   i = linha;
   j = coluna;
   if(linha > 0 && coluna > 0){
     if(palavra01[j-1] == palavra02[i-1]){
-      printf("Mantém letra: (%c) \n", palavra01[j-1]);
-      ReconstruirSolucao(matrizDistancia, linha-1, coluna-1, palavra01, palavra02, contAux);
+      printf("Mantém letra: (%c) \n", palavra02[i-1]);
+      return ReconstruirSolucao(matrizDistancia, linha-1, coluna-1, palavra01, palavra02, contAux);
     }
     else{
       if(matrizDistancia[linha][coluna-1] <= matrizDistancia[linha-1][coluna]
       && matrizDistancia[linha][coluna-1] <= matrizDistancia[linha-1][coluna-1]){
         if(contAux < (int) (strlen(palavra02) - strlen(palavra01))){
           printf("Apaga letra: (%c) \n", palavra02[j-1]);
-          ReconstruirSolucao(matrizDistancia, linha, coluna-1, palavra01, palavra02, contAux);
+          contAux ++;
+          return ReconstruirSolucao(matrizDistancia, linha, coluna-1, palavra01, palavra02, contAux);
         }
         else{
           printf("Insere letra: (%c) \n", palavra01[j-1]);
-          ReconstruirSolucao(matrizDistancia, linha, coluna-1, palavra01, palavra02, contAux);
+          return ReconstruirSolucao(matrizDistancia, linha, coluna-1, palavra01, palavra02, contAux);
         }
       }
       else if(matrizDistancia[linha-1][coluna] <= matrizDistancia[linha][coluna-1]
@@ -82,17 +83,17 @@ void ReconstruirSolucao(int ** matrizDistancia, int linha, int coluna, char* pal
         if(contAux < (int) (strlen(palavra01) - strlen(palavra02))){
           printf("Insere letra: (%c) \n", palavra01[i-1]);
           contAux ++;
-          ReconstruirSolucao(matrizDistancia, linha-1, coluna, palavra01, palavra02, contAux);
+          return ReconstruirSolucao(matrizDistancia, linha-1, coluna, palavra01, palavra02, contAux);
         }
         else{
           printf("Apaga letra: (%c) \n", palavra02[i-1]);
-          ReconstruirSolucao(matrizDistancia, linha-1, coluna, palavra01, palavra02, contAux);
+          return ReconstruirSolucao(matrizDistancia, linha-1, coluna, palavra01, palavra02, contAux);
         }
       }
       else if(matrizDistancia[linha-1][coluna-1] <= matrizDistancia[linha][coluna-1]
       && matrizDistancia[linha-1][coluna-1] <= matrizDistancia[linha-1][coluna]){
         printf("Substituir letra: (%c) por (%c)\n", palavra02[i-1], palavra01[j-1]);
-        ReconstruirSolucao(matrizDistancia, linha-1, coluna-1, palavra01, palavra02, contAux);
+        return ReconstruirSolucao(matrizDistancia, linha-1, coluna-1, palavra01, palavra02, contAux);
       }
     }
   }
